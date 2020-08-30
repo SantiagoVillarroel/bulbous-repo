@@ -18,7 +18,7 @@ public class GitPrueba {
         // TODO code application logic here
     }
     public static void prueba(){
-        
+        int i;
     }
     
 }
