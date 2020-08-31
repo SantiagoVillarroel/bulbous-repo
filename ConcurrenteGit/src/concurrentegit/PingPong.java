@@ -19,7 +19,7 @@ public class PingPong extends Thread {
     }
     
     @Override
-    public void run(){
+    public void run(){ 
         for(int i=1; i<tiempo*10;i++){
             System.out.println(cadena+" ");
             try{
