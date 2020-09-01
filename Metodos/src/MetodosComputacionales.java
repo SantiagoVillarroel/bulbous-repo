@@ -10,6 +10,17 @@
 */
 import Utiles.TecladoIn;
 public class MetodosComputacionales {
+    public static void getError(){
+        System.out.println("Ingrese valor aproximado");
+        double valorAprox= TecladoIn.readLineDouble();
+        System.out.println("Ingrese valor real");
+        double valorReal= TecladoIn.readLineDouble();
+        double errorAbs=Math.abs(valorReal-valorAprox);
+        System.out.println("Error absoluto: "+errorAbs);
+        double errorRel= errorAbs/valorReal;
+        System.out.println("Error relativo: "+errorRel);
+        System.out.println("Error porcentual: "+errorRel*100+"%");
+    }
     public static void derivadaCentral(){
         System.out.println("Ingrese x0");
         double x0= TecladoIn.readLineDouble();
@@ -127,8 +138,9 @@ public class MetodosComputacionales {
    public static void main(String[]args){
        //biseccion();
        //newtonR();
-       areaTrapecio();
-       areaSimpson();
+       //areaTrapecio();
+       //areaSimpson();
+       getError()
    }
    
    
