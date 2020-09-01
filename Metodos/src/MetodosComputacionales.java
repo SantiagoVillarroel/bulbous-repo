@@ -78,7 +78,7 @@ public class MetodosComputacionales {
         return 2*Math.sin(x+1);
     }*/
     public static double f(double x){
-        return Math.PI*Math.pow(x, 2)*((9-x)/3)-30;
+        return Math.pow(Math.E, x);
     }
     public static double df(double x){
         return 2*Math.cos(x+1) ;
