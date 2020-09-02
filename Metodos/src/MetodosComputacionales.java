@@ -125,14 +125,26 @@ public class MetodosComputacionales {
        double x1=x0;
        System.out.println("Ingrese error E");
        double E= TecladoIn.readLineDouble();
-       while(Math.abs(f(x1))>E){
+       double valor=0;
+       boolean error=false;
+       while(valor>E || valor==0){
            System.out.println("x0: "+x0);
            System.out.println("f(x0): "+f(x0));
-           System.out.println("df(x0): "+df(x0));
+           double deriv=df(x0);
+           System.out.println("df(x0): "+deriv); 
+           if(deriv!=0){
            x1= x0-(f(x0)/df(x0));
            System.out.println("x1: "+x1);
            x0=x1;
+           valor= Math.abs(f(x1));
+           }
+           else{
+               System.out.println("División por cero! ERROR");
+               valor= E+1;
+               error=true;
+           }
        }
+       if(!error)
        System.out.println("Raiz aproximada: "+x1);
    }
    public static void main(String[]args){
@@ -140,7 +152,7 @@ public class MetodosComputacionales {
        //newtonR();
        //areaTrapecio();
        //areaSimpson();
-       getError()
+       getError();
    }
    
    
