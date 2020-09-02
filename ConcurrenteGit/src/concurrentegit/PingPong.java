@@ -13,10 +13,14 @@ public class PingPong extends Thread {
     private String cadena;
     private int tiempo;
 
-    public PingPong(String cadena, int tiempo) {
-        this.cadena = cadena;
+    
+
+    public PingPong(int tiempo, String name) {
+        super();
+        this.cadena=name;
         this.tiempo = tiempo;
     }
+    
     
     @Override
     public void run(){ 
@@ -25,9 +29,8 @@ public class PingPong extends Thread {
             try{
                 Thread.sleep(tiempo);}
             catch(InterruptedException e){
-                   
-            }
-    }
+            
     }
     
-}
+    
+}}}
