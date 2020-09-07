@@ -10,21 +10,23 @@ package concurrentegit;
  * @author Faustino
  */
 public class PruebaThread {
-    public static void main(String []args) throws InterruptedException{
-    PingPong p1= new PingPong(33,"PING"), p2= new PingPong(10,"PONG");
-    PingPong p3= new PingPong(52,"PUNG"), p4= new PingPong(6,"PANG");
-    p1.start();
-    p2.start();
-    p3.start();
-    p4.start();
-    /*for(int i=1;i <100;i++){
-        Thread.sleep(27);
-        System.out.println(i);
-    }*/
-    try{
-        Thread.sleep(5000);}
-    catch(InterruptedException e){
-    
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Dato cuenta = new Dato();
+        PingPong t1 = new PingPong("PING", (int) (Math.random() * 2300), cuenta);
+        PingPong t2 = new PingPong("PONG", ((int) (Math.random() * 2000)), cuenta);
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println(Thread.currentThread() + " chau-chau.adios");
+        System.out.println(" dato " + cuenta.obtener());
+
     }
-    
-}}
+
+}
+

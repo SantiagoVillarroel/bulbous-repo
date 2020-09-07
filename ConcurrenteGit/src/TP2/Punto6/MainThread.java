@@ -16,6 +16,7 @@ import java.util.zip.ZipException;
 public class MainThread {
 
     public static void main(String[] args) {
+
         Cliente cliente1 = new Cliente("Cliente 1", new int[]{2, 2, 1, 5,
             2, 3});
         Cliente cliente2 = new Cliente("Cliente 2", new int[]{1, 3, 5, 1,
@@ -29,8 +30,10 @@ public class MainThread {
         t2.start();
         CajeraThread[] cjs = new CajeraThread[6];
         for (int i = 0; i < 6; i++) {
-            cjs[i] = new CajeraThread("Cajera" + i, new Cliente("Cliente " + i, new int[]{i + 1, (i + 1) * 2, i, 7 - i}), initialTime);
+            cjs[i] = new CajeraThread("Cajera" + i, new Cliente("Cliente " + i,
+                    new int[]{i + 1, (i + 1) * 2, i, 7 - i}), initialTime);
         }
+
         Thread[] misHilos = new Thread[6];
         for (int i = 0; i < 6; i++) {
             misHilos[i] = new Thread(cjs[i], "Cajera " + i);
