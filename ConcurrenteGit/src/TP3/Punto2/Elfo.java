@@ -17,9 +17,12 @@ public class Elfo implements Runnable {
     }
     
     public void run(){
+        int i=1;
         while(vida.getVida()>0){
+            System.out.println("curacion "+Thread.currentThread().getName()+" +3");
             vida.sumar(3,"ELFO");
-            System.out.println("get vida elfo: "+vida.getVida());
+            System.out.println("get vida "+Thread.currentThread().getName()+" "+vida.getVida());
+            i++;
         }
     }
 }

@@ -12,15 +12,13 @@ package TP3.Punto2;
 public class Main {
     public static void main(String[]args) throws InterruptedException{
         Vida v= new Vida();
-        Orco o= new Orco(v);
-        Elfo e= new Elfo(v);
+        Personaje o= new Personaje(-3,"Orco",v);
+        Personaje e= new Personaje(3,"Elfo",v);
         Thread orco= new Thread(o,"ORCO");
         Thread elfo= new Thread(e,"ELFO");
         orco.start();
         elfo.start();
         
-        elfo.join();
-        orco.join();
         System.out.println("FIN");
     }
 }

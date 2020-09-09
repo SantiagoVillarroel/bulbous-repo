@@ -14,9 +14,12 @@ public class Orco implements Runnable{
     
     
     public void run(){
+        int i=1;
         while(vida.getVida()>0){
+            System.out.println("ataque "+Thread.currentThread().getName()+" -3");
             vida.sumar(-3,"ORCO");
-            System.out.println("get vida orco: "+vida.getVida());
+            System.out.println("get vida"+Thread.currentThread().getName()+" "+vida.getVida());
+            i++;
         }
     }
 }

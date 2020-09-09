@@ -29,8 +29,6 @@ class Vida {
     }
     
     public synchronized void sumar(int mas, String nombre){
-        System.out.println(nombre+" Vida: "+vida);
         this.vida=this.vida+(mas);
-        System.out.println("Accion de "+nombre+", "+mas+" vida, vida total: "+vida);
     }
 }
