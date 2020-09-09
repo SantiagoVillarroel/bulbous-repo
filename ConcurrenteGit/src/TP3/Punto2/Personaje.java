@@ -26,6 +26,7 @@ public class Personaje implements Runnable {
             System.out.println(Thread.currentThread().getName()+" acciona, "+accion+" de vida, "+
                      "ahora tiene "+vid.getVida());
         }
+        System.out.println("VIDA FINAL: "+Thread.currentThread().getName()+" es: "+vid.getVida());
     }
     
 }

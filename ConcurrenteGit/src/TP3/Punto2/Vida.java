@@ -16,7 +16,7 @@ class Vida {
         
     }
 
-    public int getVida() {
+    public synchronized int getVida() {
         return vida;
     }
 
