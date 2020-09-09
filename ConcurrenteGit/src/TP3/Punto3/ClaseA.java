@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class ClaseA implements Runnable{
-    Variable i;
+    private Variable i;
 
     public ClaseA(Variable i) {
         this.i = i;
