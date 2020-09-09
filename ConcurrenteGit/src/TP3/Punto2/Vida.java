@@ -15,8 +15,15 @@ class Vida {
     public Vida() {
         
     }
+    public synchronized void quepasa(int accion){
+        System.out.println(Thread.currentThread().getName() + " acciona, " + accion + " de vida, "
+                      + "ahora tiene " + this.getVida());
+    }
 
     public synchronized int getVida() {
+        return vida;
+    }
+     public synchronized int getVida2() {
         return vida;
     }
 

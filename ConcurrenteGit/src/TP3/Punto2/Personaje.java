@@ -10,6 +10,7 @@ package TP3.Punto2;
  * @author Faustino
  */
 public class Personaje implements Runnable {
+
     int accion;
     String nombre;
     Vida vid;
@@ -17,16 +18,25 @@ public class Personaje implements Runnable {
     public Personaje(int accion, String nombre, Vida v) {
         this.accion = accion;
         this.nombre = nombre;
-        this.vid=v;
+        this.vid = v;
     }
-    
-    public void run(){
-        while(vid.getVida()>0){
-            vid.sumar(accion, "");
-            System.out.println(Thread.currentThread().getName()+" acciona, "+accion+" de vida, "+
-                     "ahora tiene "+vid.getVida());
+
+    public void run() {
+        int i = 0;
+        while (vid.getVida() > 0) {
+           //System.out.println(Thread.currentThread().getName() + " acciona, " + accion + " de vida, "
+             //      + "ahora tiene " + vid.getVida()) ;
+              
+                vid.sumar(accion, "");
+                System.out.println(Thread.currentThread().getName() + " acciona, " + accion + " de vida, "
+                      + "ahora tiene " + vid.getVida());
+                i++;
+            }
+            System.out.println("VIDA FINAL: " + Thread.currentThread().getName() + " es: " + vid.getVida());
         }
-        System.out.println("VIDA FINAL: "+Thread.currentThread().getName()+" es: "+vid.getVida());
-    }
-    
+        
+        
+
+ 
+
 }
