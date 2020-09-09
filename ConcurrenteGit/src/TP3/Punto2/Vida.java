@@ -20,10 +20,10 @@ class Vida {
                       + "ahora tiene " + this.getVida());
     }
 
-    public synchronized int getVida() {
+    public int getVida() {
         return vida;
     }
-     public synchronized int getVida2() {
+     public  int getVida2() {
         return vida;
     }
 

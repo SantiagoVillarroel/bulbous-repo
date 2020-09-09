@@ -21,9 +21,9 @@ public class Personaje implements Runnable {
         this.vid = v;
     }
 
-    public void run() {
+    public void run() { 
         int i = 0;
-        while (vid.getVida() > 0) {
+        while (i<=15) { 
            //System.out.println(Thread.currentThread().getName() + " acciona, " + accion + " de vida, "
              //      + "ahora tiene " + vid.getVida()) ;
               
