@@ -39,9 +39,9 @@ public class Auto extends Vehiculo implements Runnable {
     
     public synchronized void cargarNafta() throws InterruptedException{
         System.out.println(Thread.currentThread().getName()+" cargando nafta...");
-        Thread.sleep(carga*10);
+        Thread.sleep(carga*100);
         this.kmParaAndar=carga;
-        System.out.println(Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga*10)*1000+" segundos.");
+        System.out.println(Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga)+" segundos.");
     }
 
     
