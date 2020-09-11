@@ -6,20 +6,25 @@
 package TP3.Punto6;
 
 public class Main {
-    public static void main(String[]args){
-        int[]nros= new int[5000];
-        for(int i=0;i <= 4999; i++){
-            nros[i]= (int)(Math.random()*11);
+    public static void main(String[]args) throws InterruptedException{
+        int cant=6000;
+        int[]nros= new int[cant];
+        for(int i=0;i <= cant-1; i++){ //Creo arreglo de nros
+            nros[i]= 1;//(int)(Math.random()*11);
         }
         Suma n= new Suma(0);
-        Thread[] hilos= new Thread[50];
+        Thread[] hilos= new Thread[cant/100];
         int j=0;
-        for(int x=0; x<=49;x++){
-            hilos[x]= new Thread(new ContadorArreglo(j,j+100,nros,n));
-            j++;
+        for(int x=0; x<=(cant/100)-1;x++){ //Creo hilos 
+            hilos[x]= new Thread(new ContadorArreglo(j,j+99,nros,n));
+            j=j+100;
         }
-        for(int x=0; x<=49;x++){
+        for(int x=0; x<=(cant/100)-1;x++){ //Corro hilos
             hilos[x].start();
+        }
+        
+        for(int x=0; x<= (cant/100)-1; x++){
+            hilos[x].join();
         }
         
         System.out.println("Suma: "+n.getValor());

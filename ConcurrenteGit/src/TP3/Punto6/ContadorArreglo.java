@@ -25,8 +25,10 @@ public class ContadorArreglo implements Runnable {
    
     
     public void run(){
+        int sumaAux=0;
         for(int i=indiceInf; i<=indiceSup; i++){
-            this.suma.sumar(nros[i]);
+            sumaAux=sumaAux+nros[i];
         }
+        this.suma.sumar(sumaAux);
     }
 }
