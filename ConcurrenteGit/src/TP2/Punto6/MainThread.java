@@ -15,16 +15,17 @@ import java.util.zip.ZipException;
  */
 public class MainThread {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Cliente[] clientes= new Cliente[6];
+        Donacion don= new Donacion();
         for(int i=0;i<=5;i++){
-            clientes[i]= new Cliente("Cliente "+i, new Producto[]{new Producto((i+1)*4,(i+3)*2),new Producto(30,11),new Producto(i+21,(i+2)*6)});
+            clientes[i]= new Cliente("Cliente "+i, new Producto[]{new Producto(4,(i+3)*2),new Producto(4,11),new Producto(4,(i+2)*6)});
         }
        
         long initialTime = System.currentTimeMillis();
         CajeraThread[] cjs= new CajeraThread[6];
         for(int i=0;i <=5; i++){
-            cjs[i]= new CajeraThread("Cajera "+i,clientes[i],initialTime);
+            cjs[i]= new CajeraThread("Cajera "+i,clientes[i],initialTime,don);
         }
         Thread[] misHilos = new Thread[6];
         for(int i=0;i<6;i++){
@@ -34,6 +35,10 @@ public class MainThread {
         for (int i = 0; i < 6; i++) {
             misHilos[i].start();
         }
+        for (int i = 0; i < 6; i++) {
+            misHilos[i].join();
+        }
+        System.out.println("Donacion: "+don.getValor());
 
         
     }

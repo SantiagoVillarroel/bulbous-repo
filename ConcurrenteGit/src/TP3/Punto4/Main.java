@@ -12,8 +12,9 @@ package TP3.Punto4;
 public class Main {
     public static void main(String[]args){
         Thread[] autos= new Thread[5];
+        Surtidor surt= new Surtidor();
         for(int i=0;i<=4;i++){
-            autos[i]= new Thread(new Auto((i+1)*110,(i+1)*55),"Auto "+i);
+            autos[i]= new Thread(new Auto((i+1)*110,(i+1)*55,surt),"Auto "+i);
         }
         for(int i=0; i<=4;i++){
             autos[i].start();

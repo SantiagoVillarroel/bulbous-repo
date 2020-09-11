@@ -13,6 +13,7 @@ public class CajeraThread implements Runnable {
     private String nombre;
     private Cliente cliente;
     private long initialTime;
+    private Donacion don;
 // Constructor, y métodos de acceso
 
     public void run() {
@@ -35,15 +36,17 @@ public class CajeraThread implements Runnable {
         }
         System.out.println("La cajera" + this.nombre + "HA TERMINADO DEPROCESAR " + this.cliente.getNombre() + " EN EL TIEMPO: "
                 + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg. Fue una compra por: "+precioTotal);
+        don.sumar((double)precioTotal/100);
     }
 
-    public CajeraThread(String nombre, Cliente cliente, long initialTime) {
+    public CajeraThread(String nombre, Cliente cliente, long initialTime, Donacion d) {
         this.nombre = nombre;
         this.cliente = cliente;
         this.initialTime = initialTime;
+        this.don=d;
     }
 
     public static void esperarXsegundos(int i) throws InterruptedException {
-        Thread.sleep(i * 1000);
+        Thread.sleep(i * 10);
     }
 }

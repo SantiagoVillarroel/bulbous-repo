@@ -13,12 +13,31 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class Auto extends Vehiculo implements Runnable {
-    int carga;
+    private int carga;
+    private Surtidor surt;
 
-    public Auto(int kmParaAndar, int c) {
+    public Auto(int kmParaAndar, int c,Surtidor surt) {
         super(kmParaAndar);
         carga= c;
+        this.surt=surt;
     }
+
+    public int getCarga() {
+        return carga;
+    }
+
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
+
+    public int getKmParaAndar() {
+        return kmParaAndar;
+    }
+
+    public void setKmParaAndar(int kmParaAndar) {
+        this.kmParaAndar = kmParaAndar;
+    }
+    
     
     public void run(){
         for(int i=0; i<= 2;i++){
@@ -29,20 +48,16 @@ public class Auto extends Vehiculo implements Runnable {
             }
             System.out.println(Thread.currentThread().getName()+" se quedó sin nafta. Recorrió "+km+" kilometros");
             try {
-                cargarNafta();
+                this.kmParaAndar= surt.cargarNafta(carga);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auto.class.getName()).log(Level.SEVERE, null, ex);
             }
+                    
             
         }
     }
     
-    public synchronized void cargarNafta() throws InterruptedException{
-        System.out.println(Thread.currentThread().getName()+" cargando nafta...");
-        Thread.sleep(carga*100);
-        this.kmParaAndar=carga;
-        System.out.println(Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga)+" segundos.");
-    }
+    
 
     
 }
