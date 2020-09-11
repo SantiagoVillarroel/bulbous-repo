@@ -16,20 +16,25 @@ public class CajeraThread implements Runnable {
 // Constructor, y métodos de acceso
 
     public void run() {
+        int precioTotal=0;
         System.out.println("La cajera " + this.nombre
                 + " COMIENZA A PROCESAR LA COMPRA DEL CLIENTE "
                 + this.cliente.getNombre() + " EN EL TIEMPO: "
                 + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg");
         for (int i = 0; i < this.cliente.getCarroCompra().length; i++) {
             try {
-                this.esperarXsegundos(cliente.getCarroCompra()[i]);
-                System.out.println("Procesado el producto " + (i + 1) + "del cliente " + this.cliente.getNombre() + "->Tiempo: " + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg");
+                this.esperarXsegundos(cliente.getCarroCompra()[i].getTiempo());
+                System.out.println("Procesado el producto " + (i + 1) + "del cliente " 
+               + this.cliente.getNombre() + "->Tiempo: " + (System.currentTimeMillis()
+                       - this.initialTime) / 1000 + "seg");
+                precioTotal=precioTotal+cliente.getCarroCompra()[i].getPrecio();
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(CajeraThread.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         System.out.println("La cajera" + this.nombre + "HA TERMINADO DEPROCESAR " + this.cliente.getNombre() + " EN EL TIEMPO: "
-                + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg");
+                + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg. Fue una compra por: "+precioTotal);
     }
 
     public CajeraThread(String nombre, Cliente cliente, long initialTime) {

@@ -16,41 +16,26 @@ import java.util.zip.ZipException;
 public class MainThread {
 
     public static void main(String[] args) {
-
-        Cliente cliente1 = new Cliente("Cliente 1", new int[]{2, 2, 1, 5,
-            2, 3});
-        Cliente cliente2 = new Cliente("Cliente 2", new int[]{1, 3, 5, 1,
-            1});
-        long initialTime = System.currentTimeMillis();
-        CajeraThread c1 = new CajeraThread("Cajera 1", cliente1, initialTime);
-        CajeraThread c2 = new CajeraThread("Cajera2", cliente2, initialTime);
-        Thread t1 = new Thread(c1, "Cajera 1");
-        Thread t2 = new Thread(c2, "Cajera 2");
-        t1.start();
-        t2.start();
-        CajeraThread[] cjs = new CajeraThread[6];
-        for (int i = 0; i < 6; i++) {
-            cjs[i] = new CajeraThread("Cajera" + i, new Cliente("Cliente " + i,
-                    new int[]{i + 1, (i + 1) * 2, i, 7 - i}), initialTime);
+        Cliente[] clientes= new Cliente[6];
+        for(int i=0;i<=5;i++){
+            clientes[i]= new Cliente("Cliente "+i, new Producto[]{new Producto((i+1)*4,(i+3)*2),new Producto(30,11),new Producto(i+21,(i+2)*6)});
         }
-
+       
+        long initialTime = System.currentTimeMillis();
+        CajeraThread[] cjs= new CajeraThread[6];
+        for(int i=0;i <=5; i++){
+            cjs[i]= new CajeraThread("Cajera "+i,clientes[i],initialTime);
+        }
         Thread[] misHilos = new Thread[6];
-        for (int i = 0; i < 6; i++) {
-            misHilos[i] = new Thread(cjs[i], "Cajera " + i);
-
+        for(int i=0;i<6;i++){
+            misHilos[i]= new Thread(cjs[i],"Cajera "+i);
         }
 
         for (int i = 0; i < 6; i++) {
             misHilos[i].start();
         }
 
-        try {
-            metodo1();
-        } catch (ArithmeticException e) {
-            System.out.println("Div 0");
-        } finally {
-            System.out.println("Finally 1");
-        }
+        
     }
 
     public static void metodo1() {

@@ -19,13 +19,7 @@ public class ClaseA implements Runnable{
         this.i = i;
     }
     public void run(){
-        for(int x=0; x<=10; x++){
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        while(true){
         if(i.getValor()==0){
             System.out.print("A");
             i.setValor(1);

@@ -12,10 +12,10 @@ package TP2.Punto6;
 public class Cliente {
 
     private String nombre;
-    private int[] carroCompra;
+    private Producto[] carroCompra;
 // Constructor y métodos de acceso
 
-    public Cliente(String nombre, int[] carroCompra) {
+    public Cliente(String nombre, Producto[] carroCompra) {
         this.nombre = nombre;
         this.carroCompra = carroCompra;
     }
@@ -28,11 +28,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int[] getCarroCompra() {
+    public Producto[] getCarroCompra() {
         return carroCompra;
     }
 
-    public void setCarroCompra(int[] carroCompra) {
+    public void setCarroCompra(Producto[] carroCompra) {
         this.carroCompra = carroCompra;
     }
     
