@@ -14,7 +14,7 @@ public class Vida {
     public Vida(){
         this.vida=10;
     }
-    public void modif(int x){
+    public synchronized void modif(int x){
         this.vida=vida+x;
     }
     public int getVida(){
