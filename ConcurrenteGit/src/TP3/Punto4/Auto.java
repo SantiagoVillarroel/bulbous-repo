@@ -48,11 +48,7 @@ public class Auto extends Vehiculo implements Runnable {
                 this.kmParaAndar--;
             }
             System.out.println(Thread.currentThread().getName()+" se quedó sin nafta. Recorrió "+km+" kilometros");
-            try {
-                hay= surt.cargarNafta(this,carga);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Auto.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            hay= surt.cargarNafta(this,carga);
                     
             
         }
