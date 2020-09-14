@@ -1,5 +1,6 @@
-package TP3;
+package TP3.Punto1;
 
+import TP3.Punto1.CuentaBanco;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

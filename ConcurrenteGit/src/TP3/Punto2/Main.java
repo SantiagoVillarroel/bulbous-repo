@@ -11,14 +11,16 @@ package TP3.Punto2;
  */
 public class Main {
     public static void main(String[]args) throws InterruptedException{
-        Vida v= new Vida();
-        Personaje o= new Personaje(-3,"Orco",v);
-        Personaje e= new Personaje(3,"Elfo",v);
-        Thread orco= new Thread(o,"ORCO");
-        Thread elfo= new Thread(e,"ELFO");
+        Jugador jugador= new Jugador();
+        Orco orcoObjeto= new Orco(jugador);
+        Elfo elfoObjeto= new Elfo(jugador);
+        Thread orco= new Thread(orcoObjeto,"ORCO");
+        Thread elfo= new Thread(elfoObjeto,"ELFO");
         orco.start();
         elfo.start();
+        elfo.join();
+        orco.join();
         
-        System.out.println("FIN");
+        System.out.println("Vida del jugador: "+jugador.getVida());
     }
 }

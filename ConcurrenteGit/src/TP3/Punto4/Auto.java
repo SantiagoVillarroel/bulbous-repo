@@ -52,9 +52,4 @@ public class Auto extends Vehiculo implements Runnable {
                     
             
         }
-    }
-    
-    
-
-    
-}
+    }}

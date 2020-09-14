@@ -21,7 +21,7 @@ public class Plato extends Instalacion {
      * @throws InterruptedException
      */
     @Override
-    public synchronized void usar() throws InterruptedException{
+    public void usar() throws InterruptedException{
         System.out.println(Thread.currentThread().getName()+" comiendo...");
         Thread.sleep(segs*1000);
         System.out.println(Thread.currentThread().getName()+" terminó de comer.");

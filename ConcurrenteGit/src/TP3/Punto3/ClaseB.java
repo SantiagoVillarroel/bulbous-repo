@@ -20,7 +20,6 @@ public class ClaseB implements Runnable {
     }
     public void run(){
         while(true){
-        
         if(i.getValor()==1){
             System.out.print("BB");
             i.setValor(2);

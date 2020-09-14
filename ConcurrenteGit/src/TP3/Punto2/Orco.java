@@ -6,20 +6,17 @@
 package TP3.Punto2;
 
 public class Orco implements Runnable{
-    Vida vida;
+    Jugador jug;
 
-    public Orco(Vida vida) {
-        this.vida = vida;
+    public Orco(Jugador jug) {
+        this.jug = jug;
     }
+
     
     
     public void run(){
         int i=1;
-        while(vida.getVida()>0){
-            System.out.println("ataque "+Thread.currentThread().getName()+" -3");
-            vida.sumar(-3,"ORCO");
-            System.out.println("get vida"+Thread.currentThread().getName()+" "+vida.getVida());
-            i++;
-        }
+        int cant= jug.getVida();
+        jug.setVida(cant-3);
     }
 }

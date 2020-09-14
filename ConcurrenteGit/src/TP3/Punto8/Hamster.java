@@ -24,6 +24,7 @@ public class Hamster implements Runnable{
     public void run(){
         for(int i=1; i<=20;i++){
         switch(turno){
+            //Caso Plato
             case 'p':
         {
             try {
@@ -33,7 +34,7 @@ public class Hamster implements Runnable{
             }
         }   turno='r';
                 break;
-                
+                //Caso Rueda
                 case 'r':
         {
             try {
@@ -43,6 +44,7 @@ public class Hamster implements Runnable{
             }
         }turno='h';
                 break;
+                //Caso Hamaca
                 case 'h':
         {
             try {

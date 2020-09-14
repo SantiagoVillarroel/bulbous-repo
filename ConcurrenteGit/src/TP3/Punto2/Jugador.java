@@ -9,25 +9,17 @@ package TP3.Punto2;
  *
  * @author Faustino
  */
-class Vida {
-    int vida=10;
+class Jugador {
+    private int vida=10;
 
-    public Vida() {
-        
+    public Jugador() {
     }
-    public synchronized void quepasa(int accion){
-        System.out.println(Thread.currentThread().getName() + " acciona, " + accion + " de vida, "
-                      + "ahora tiene " + this.getVida());
-    }
-
-    public int getVida() {
+    
+    public synchronized int getVida() {
         return vida;
     }
-     public  int getVida2() {
-        return vida;
-    }
-
-    public void setVida(int vida) {
+     
+    public synchronized void setVida(int vida) {
         this.vida = vida;
     }
     

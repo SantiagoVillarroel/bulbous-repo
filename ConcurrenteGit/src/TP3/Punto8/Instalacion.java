@@ -15,7 +15,6 @@ public class Instalacion {
     public Instalacion(int segs) {
         this.segs = segs;
     }
-    public void usar() throws InterruptedException{
-        
+    public synchronized void usar() throws InterruptedException{
     }
 }
