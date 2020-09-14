@@ -95,7 +95,7 @@ public class MetodosComputacionales {
         return 2*Math.sin(x+1);
     }*/
     public static double f(double x) {
-        return Math.pow(x, 3) - 2 * x - 1;
+        return Math.tan(x);
     }
 
     public static double df(double x) {
@@ -169,6 +169,7 @@ public class MetodosComputacionales {
         double r = 0;
         if (f(a) * f(b) < 0) {
             while (r == 0 || Math.abs(f(r)) > E) {
+                System.out.println("a: "+a+" b: "+b);
                 r = (a + b) / 2;
                 System.out.println("r: " + r);
                 if (f(a) * f(r) < 0) {
