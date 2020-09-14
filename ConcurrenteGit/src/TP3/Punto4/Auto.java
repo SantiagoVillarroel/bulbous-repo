@@ -40,7 +40,8 @@ public class Auto extends Vehiculo implements Runnable {
     
     
     public void run(){
-        for(int i=0; i<= 2;i++){
+        boolean hay=true;
+        while(hay){
             System.out.println(Thread.currentThread().getName()+" comienza a andar.");
             int km= this.kmParaAndar;
             for(int j=km; j>0; j--){
@@ -48,7 +49,7 @@ public class Auto extends Vehiculo implements Runnable {
             }
             System.out.println(Thread.currentThread().getName()+" se quedó sin nafta. Recorrió "+km+" kilometros");
             try {
-                this.kmParaAndar= surt.cargarNafta(carga);
+                hay= surt.cargarNafta(this,carga);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Auto.class.getName()).log(Level.SEVERE, null, ex);
             }

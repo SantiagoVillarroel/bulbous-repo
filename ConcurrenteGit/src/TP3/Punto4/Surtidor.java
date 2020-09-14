@@ -6,11 +6,22 @@
 package TP3.Punto4;
 
 public class Surtidor {
-    
-    public synchronized int cargarNafta(int carga) throws InterruptedException{
+    private int cantidad;
+
+    public Surtidor() {
+        cantidad=2500;
+    }
+        
+    public synchronized boolean cargarNafta(Auto auto, int carga) throws InterruptedException{
+        boolean res= (this.cantidad-carga)>=0;
+        if(res){
         System.out.println(Thread.currentThread().getName()+" cargando nafta...");
         Thread.sleep(carga*100);
+        auto.setCarga(carga);
         System.out.println(Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga)+" segundos.");
-        return carga;
+        }else{
+            System.out.println("No queda nafta en el surtidor.");
+        }
+        return res;
     }
 }
