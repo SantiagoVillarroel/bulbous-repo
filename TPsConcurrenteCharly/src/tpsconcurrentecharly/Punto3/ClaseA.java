@@ -24,7 +24,7 @@ public class ClaseA implements Runnable{
         } catch (InterruptedException ex) {
             Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(int x=0;x<=10;x++){
+        for(int x=0;x<=11;x++){
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
