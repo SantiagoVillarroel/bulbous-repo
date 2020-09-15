@@ -19,7 +19,17 @@ public class ClaseB implements Runnable {
         this.i = i;
     }
     public void run(){
-        while(true){
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ClaseB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(int x=0;x<=10;x++){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ClaseB.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(i.getValor()==1){
             System.out.print("BB");
             i.setValor(2);

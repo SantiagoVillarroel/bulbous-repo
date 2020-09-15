@@ -14,7 +14,17 @@ public class ClaseC implements Runnable {
         this.i=i;
     }
     public void run(){
-        while(true){
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ClaseC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(int x=0;x<=10;x++){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ClaseC.class.getName()).log(Level.SEVERE, null, ex);
+            }
         if(i.getValor()==2){
             System.out.print("CCC");
             i.setValor(0);
