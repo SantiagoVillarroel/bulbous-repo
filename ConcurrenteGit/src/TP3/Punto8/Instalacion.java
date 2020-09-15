@@ -16,5 +16,6 @@ public class Instalacion {
         this.segs = segs;
     }
     public synchronized void usar() throws InterruptedException{
+        Thread.sleep(segs*1000);
     }
 }

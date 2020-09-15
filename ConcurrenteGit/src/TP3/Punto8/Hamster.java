@@ -13,8 +13,8 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class Hamster implements Runnable{
-    char turno;
-    Instalacion[] inst;
+    private char turno;
+    private Instalacion[] inst;
 
     public Hamster(char turno, Instalacion[] i) {
         this.turno = turno;

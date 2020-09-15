@@ -23,7 +23,7 @@ public class Plato extends Instalacion {
     @Override
     public void usar() throws InterruptedException{
         System.out.println(Thread.currentThread().getName()+" comiendo...");
-        Thread.sleep(segs*1000);
+        super.usar();
         System.out.println(Thread.currentThread().getName()+" terminó de comer.");
     }
 }

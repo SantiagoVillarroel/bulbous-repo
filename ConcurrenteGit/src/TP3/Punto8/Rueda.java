@@ -14,7 +14,7 @@ public class Rueda extends Instalacion {
     
     public synchronized void usar() throws InterruptedException{
         System.out.println(Thread.currentThread().getName()+" jugando...");
-        Thread.sleep(segs*1000);
+        super.usar();
         System.out.println(Thread.currentThread().getName()+" terminó de correr.");
     }
 }

@@ -17,7 +17,7 @@ public class Hamaca extends Instalacion {
     }
     public synchronized void usar() throws InterruptedException{
         System.out.println(Thread.currentThread().getName()+" descansando...");
-        Thread.sleep(segs*1000);
+        super.usar();
         System.out.println(Thread.currentThread().getName()+" terminó de descansar.");
     }
 }
