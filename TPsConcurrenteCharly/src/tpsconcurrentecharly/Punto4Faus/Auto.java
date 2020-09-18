@@ -16,11 +16,14 @@ import java.util.logging.Logger;
 public class Auto extends Vehiculo implements Runnable {
     private int carga;
     private Surtidor surt;
+    private String color;
 
-    public Auto(int kmParaAndar, int c,Surtidor surt) {
+
+    public Auto(int kmParaAndar, int c,Surtidor surt, String color) {
         super(kmParaAndar);
         carga= c;
         this.surt=surt;
+        this.color=color;
     }
 
     public int getCarga() {
@@ -43,13 +46,18 @@ public class Auto extends Vehiculo implements Runnable {
     public void run(){
         boolean hay=true;
         while(hay){
-            System.out.println(Thread.currentThread().getName()+" comienza a andar.");
+            System.out.println(color+Thread.currentThread().getName()+" comienza a andar.");
             int km= this.kmParaAndar;
             for(int j=km; j>0; j--){
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Auto.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 this.kmParaAndar--;
             }
-            System.out.println(Thread.currentThread().getName()+" se quedó sin nafta. Recorrió "+km+" kilometros");
-            hay= surt.cargarNafta(this,carga);
+            System.out.println(color+Thread.currentThread().getName()+" se quedó sin nafta. Recorrió "+km+" kilometros");
+            hay= surt.cargarNafta(this,carga,color);
                     
             
         }

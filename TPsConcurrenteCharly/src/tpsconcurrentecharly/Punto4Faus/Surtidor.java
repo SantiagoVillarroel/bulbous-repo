@@ -16,21 +16,21 @@ public class Surtidor {
         cantidad=2500;
     }
         
-    public synchronized boolean cargarNafta(Auto auto, int carga){
+    public synchronized boolean cargarNafta(Auto auto, int carga, String color){
         boolean res= (this.cantidad-carga)>=0;
         if(res){
         this.cantidad=this.cantidad-carga;
-        System.out.println(Thread.currentThread().getName()+" cargando nafta...");
+        System.out.println(color+Thread.currentThread().getName()+" cargando nafta...");
             try {
                 Thread.sleep(carga*10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Surtidor.class.getName()).log(Level.SEVERE, null, ex);
             }
         auto.setKmParaAndar(carga);
-        System.out.println(Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga)+" segundos.");
-        System.out.println("Queda nafta para "+this.cantidad+" km");
+        System.out.println(color+Thread.currentThread().getName()+" terminó de cargar! Esperó "+(carga)+" segundos.");
+        System.out.println(color+"Queda nafta para "+this.cantidad+" km");
         }else{
-            System.out.println("NO QUEDA NAFTA EN EL SURTIDOR. Vuelva mañana.");
+            System.out.println(color+"NO QUEDA NAFTA EN EL SURTIDOR. Vuelva mañana.");
         }
         return res;
     }
