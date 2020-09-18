@@ -1,4 +1,4 @@
-package sincronizacionTP.cuatro;
+package tpsconcurrentecharly.cuatro;
 
 public class Surtidor {
     private float disponible = 50;

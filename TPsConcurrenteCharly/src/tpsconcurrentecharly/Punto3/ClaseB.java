@@ -20,17 +20,22 @@ public class ClaseB implements Runnable {
     }
     public void run(){
         try {
-            Thread.sleep(200);
+            Thread.sleep(150);
         } catch (InterruptedException ex) {
             Logger.getLogger(ClaseB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(int x=0;x<=11;x++){
+        for(int x=0;x<=3000;x++){
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ClaseB.class.getName()).log(Level.SEVERE, null, ex);
             }
         if(i.getValor()==1){
+            try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
+                }
             System.out.print("BB");
             i.setValor(2);
         }

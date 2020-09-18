@@ -15,7 +15,6 @@ public class ABC {
         ClaseA a= new ClaseA(i);
         ClaseB b= new ClaseB(i);
         ClaseC c= new ClaseC(i);
-        System.out.println("commm");
         Thread[] ts= new Thread[3];
         ts[0]= new Thread(a);
         ts[1]= new Thread(b);

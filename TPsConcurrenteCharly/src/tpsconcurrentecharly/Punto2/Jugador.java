@@ -23,11 +23,11 @@ class Jugador {
         this.vida = vida;
     }
     
-    public void restar(int menos){
+    public void recibeAtaque(int menos){
         this.vida=this.vida-menos;
     }
     
-    public synchronized void sumar(int mas, String nombre){
+    public synchronized void recibeCura(int mas){
         this.vida=this.vida+(mas);
     }
 }

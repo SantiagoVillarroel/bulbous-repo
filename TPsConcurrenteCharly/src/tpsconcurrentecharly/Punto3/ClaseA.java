@@ -24,13 +24,18 @@ public class ClaseA implements Runnable{
         } catch (InterruptedException ex) {
             Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(int x=0;x<=11;x++){
+        for(int x=0;x<=3000;x++){
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
             }
         if(i.getValor()==0){
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ClaseA.class.getName()).log(Level.SEVERE, null, ex);
+                }
             System.out.print("A");
             i.setValor(1);
         }}
