@@ -23,13 +23,13 @@ public class Peluqueria {
     public static void main(String []args) throws InterruptedException{
         Sillon sillon= new Sillon();
         Thread[]hilos= new Thread[6];
-        String rojo= ANSI_RED;
-        hilos[0]= new Thread(new Barbero(rojo, sillon,6),"Barbero");
+        String negro= ANSI_BLACK;
+        hilos[0]= new Thread(new Barbero(negro, sillon,6),"Barbero");
         for(int i=1; i<=5;i++){
         String color=ANSI_BLACK;
             switch(i){
                 case 1:
-                    color= ANSI_YELLOW;
+                    color= ANSI_RED;
                     break;
                 case 2:
                     color= ANSI_BLUE;
@@ -54,7 +54,7 @@ public class Peluqueria {
             hilos[i].start();
             else{
                 
-                Thread.sleep(200);
+                //Thread.sleep(200);
                 hilos[i].start();
             }
         }
