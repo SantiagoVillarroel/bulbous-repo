@@ -22,9 +22,9 @@ public class Peluqueria {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static void main(String []args) throws InterruptedException{
         Sillon sillon= new Sillon();
-        Thread[]hilos= new Thread[6];
+        Thread[]hilos= new Thread[20];
         String negro= ANSI_BLACK;
-        hilos[0]= new Thread(new Barbero(negro, sillon,6),"Barbero");
+        hilos[0]= new Thread(new Barbero(negro, sillon,15),"Barbero");
         for(int i=1; i<=5;i++){
         String color=ANSI_BLACK;
             switch(i){
@@ -58,6 +58,7 @@ public class Peluqueria {
                 hilos[i].start();
             }
         }
-        
-    }
+       
+       
+}
 }

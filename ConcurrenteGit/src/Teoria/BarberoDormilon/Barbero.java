@@ -42,7 +42,7 @@ public class Barbero implements Runnable{
     }
     
     public void run(){
-        for(int i=1; i<=cant; i++){
+        while(true){
             try {
                 sillon.afeitar(color);
             } catch (InterruptedException ex) {
@@ -50,7 +50,5 @@ public class Barbero implements Runnable{
             }
         
     }
-        
-        System.out.println(color+"Barbero terminó de afeitar por hoy");
 }
 }

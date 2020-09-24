@@ -30,14 +30,21 @@ public class Sillon {
            semSalida.release();
     }
     
-    public void serAtendido(String color) throws InterruptedException{
+    public boolean serAtendido(String color) throws InterruptedException{
+        
+        boolean res=semSillon.tryAcquire();
+        if(res){
             System.out.println(color+Thread.currentThread().getName()+ " llega a la barberìa.");
-            semSillon.acquire();
             semBarbero.release();
             System.out.println(color+Thread.currentThread().getName()+ " se sienta en el sillòn.");
             System.out.println(color+Thread.currentThread().getName()+ " es atendido.");
             semSalida.acquire();
             semSillon.release();
             System.out.println(color+Thread.currentThread().getName()+ " se va.");
-    }
-}
+    }else{
+            System.out.println(color+Thread.currentThread().getName()+" no pudo ser atendido, se fue.");
+        }
+        return res;
+            
+    
+}}

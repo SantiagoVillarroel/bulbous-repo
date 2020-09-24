@@ -39,10 +39,18 @@ public class Cliente implements Runnable{
     
     
     public void run(){
+        boolean res= false;
+        while(!res){
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         try {
-            sillon.serAtendido(color);
+            res= sillon.serAtendido(color);
         } catch (InterruptedException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        }
 }
