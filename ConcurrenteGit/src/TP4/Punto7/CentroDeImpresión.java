@@ -64,12 +64,11 @@ public class CentroDeImpresión {
             }
             
             hilos[i]= new Thread(t,"Trabajo "+i);
+            hilos[i].start();
             
         }
         
         
-        for(int i=0; i<=9; i++){
-            hilos[i].start();
-        }
+        
     }
 }
