@@ -14,9 +14,9 @@ import TP3.Punto3.*;
 public class ABC {
     public static void main(String[]args){
         Variable i= new Variable(5);
-        ClaseA a= new ClaseA(i);
-        ClaseB b= new ClaseB(i);
-        ClaseC c= new ClaseC(i);
+        ClaseA a= new ClaseA(i,1);
+        ClaseB b= new ClaseB(i,2);
+        ClaseC c= new ClaseC(i,3);
         Thread[] ts= new Thread[3];
         ts[0]= new Thread(a);
         ts[1]= new Thread(b);

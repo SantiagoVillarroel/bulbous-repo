@@ -28,33 +28,39 @@ public class Variable {
         this.valor = valor;
     }
     
-    public void imprimirA(){
+    public void imprimirA(int veces){
         try {
             semA.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Variable.class.getName()).log(Level.SEVERE, null, ex);
         }
+        for(int i=1; i<= veces; i++){
         System.out.print("A");
+        }
         semB.release();
     }
     
-    public void imprimirB(){
+    public void imprimirB(int veces){
         try {
             semB.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Variable.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.print("BB");
+        for(int i=1; i<= veces; i++){
+        System.out.print("B");
+        }
         semC.release();
     }
     
-    public void imprimirC(){
+    public void imprimirC(int veces){
         try {
             semC.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Variable.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.print("CCC");
+        for(int i=1; i<= veces; i++){
+        System.out.print("C");
+        }
         semA.release();
     }
            

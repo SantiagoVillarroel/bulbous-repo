@@ -14,14 +14,21 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class ClaseB implements Runnable {
-    Variable i;
+    private Variable i;
+    private int cant;
 
     public ClaseB(Variable i) {
         this.i = i;
     }
+
+    public ClaseB(TP4.Punto6.Variable i, int cant) {
+        this.i = i;
+        this.cant = cant;
+    }
+    
     public void run(){
-        int cant= i.getValor();
-        for(int x=0; x<= cant;x++){
-            i.imprimirB();
+        int cantI= i.getValor();
+        for(int x=0; x<= cantI;x++){
+            i.imprimirB(cant);
     }}
 }

@@ -11,13 +11,20 @@ import java.util.logging.Logger;
 
 public class ClaseC implements Runnable {
     Variable i;
+    int cant;
     public ClaseC(Variable i) {
         this.i=i;
     }
+
+    public ClaseC(TP4.Punto6.Variable i, int cant) {
+        this.i = i;
+        this.cant = cant;
+    }
+    
     public void run(){
-        int cant= i.getValor();
-        for(int x=0; x<= cant;x++){
-        i.imprimirC();
+        int cantI= i.getValor();
+        for(int x=0; x<= cantI;x++){
+        i.imprimirC(cant);
     }}
     
     
