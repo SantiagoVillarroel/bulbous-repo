@@ -6,10 +6,13 @@ package TP4.Punto7;
 public class Cola {
     private Nodo frente;
     private Nodo fin;
+    private int longitud;
     //Constructor
     public Cola(){
         this.fin= null;
         this.frente= null;
+        this.longitud=0;
+        
     }
     //Modificadores
     public boolean poner(Object x){
@@ -21,6 +24,7 @@ public class Cola {
             this.fin.setEnlace(n);
             this.fin=n;
         }
+        this.longitud++;
          return true;
     }
     public boolean sacar(){
@@ -33,11 +37,13 @@ public class Cola {
                this.fin=null;
            }
        }
+       this.longitud--;
        
        return res;
     }
     public void vaciar(){
         this.frente=null;
+        this.longitud=0;
     }
     //Observadores
     public Object obtenerFrente(){
@@ -71,6 +77,15 @@ public class Cola {
         
         return c;
     }
+
+    public int getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(int longitud) {
+        this.longitud = longitud;
+    }
+    
     @Override
     public String toString(){
         String s="Cola vacia.";

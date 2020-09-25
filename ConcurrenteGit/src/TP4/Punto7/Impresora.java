@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 public class Impresora {
     Semaphore sem;
     private Lista espera;
+    private Cola esp;
 
     public Impresora() {
         this.sem= new Semaphore(1);
@@ -32,18 +33,22 @@ public class Impresora {
     public void imprimir(String color, String t){
         System.out.println(color+Thread.currentThread().getName()+" pide impresora");
         espera.insertar(1, espera.longitud()+1);
+        esp.poner(t);
         try {
             sem.acquire();
         } catch (InterruptedException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(color+Thread.currentThread().getName()+" consigue impresora");
+        System.out.println(color+Thread.currentThread().getName()+" consigue"
+                + " impresora // Imprimiendo");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Impresora.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(t+" *texto a imprimir* ");
+        String tex=(String)esp.obtenerFrente();
+        System.out.println(tex+" *texto a imprimir* ");
+        esp.sacar();
         espera.eliminar(1);
         sem.release();
         
