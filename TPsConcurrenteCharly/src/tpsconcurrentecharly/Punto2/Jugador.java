@@ -23,7 +23,7 @@ class Jugador {
         this.vida = vida;
     }
     
-    public void recibeAtaque(int menos){
+    public synchronized void recibeAtaque(int menos){
         this.vida=this.vida-menos;
     }
     
