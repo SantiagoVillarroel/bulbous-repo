@@ -14,7 +14,7 @@ public class Main {
         Testigo testigo = new Testigo();
         
         Thread[] atletas = new Thread[4];
-        for(int i=0; i<4; i++){
+        for(int i=0; i<4; i++){ //Inicializo atletas e hilos y los ejecuto.
             atletas[i]=new Thread(new Atleta((i+1), testigo), "Atleta "+(i+1));
             atletas[i].start();
         }
