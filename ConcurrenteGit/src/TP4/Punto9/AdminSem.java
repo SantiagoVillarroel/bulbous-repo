@@ -18,7 +18,6 @@ public class AdminSem {
     private Semaphore semSubir;
     private Semaphore semBajar;
     private Semaphore semDormir;
-    public static final String ANSI_PURPLE = "\u001B[35m";
 
     public AdminSem() {
         semManejar= new Semaphore(0);
@@ -26,26 +25,30 @@ public class AdminSem {
         semBajar= new Semaphore(1);
     }
     
-    public void taxi(){
+    public void taxi(String color){
         while(true){
-            System.out.println(Thread.currentThread().getName()+" durmiendo...");
+            System.out.println(color+Thread.currentThread().getName()+" durmiendo...");
             
         try {
             semManejar.acquire();
+            System.out.println(color+Thread.currentThread().getName()+" se despierta y maneja");
         } catch (InterruptedException ex) {
             Logger.getLogger(AdminSem.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(Thread.currentThread().getName()+
-                " lleva a pasajero...");
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(AdminSem.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            System.out.println(Thread.currentThread().getName()+" termina el recorrido.");
+        this.manejar(color);
+            System.out.println(color+Thread.currentThread().getName()+" termina el recorrido.");
         semBajar.release();
         }
     
+    }
+    public void manejar(String color){
+        System.out.println(color+Thread.currentThread().getName()+
+                " lleva a pasajero...");
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(AdminSem.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public boolean pasajero(String color){
@@ -60,9 +63,6 @@ public class AdminSem {
         }
         System.out.println(color+Thread.currentThread().getName()+" se baja del taxi.");
         semSubir.release();
-        
-    }else{
-            System.out.println(color+Thread.currentThread().getName()+" taxi ocupado rey.");
         }
         return res;
 }

@@ -12,7 +12,7 @@ public class CajeraThread implements Runnable {
 
     private String nombre;
     private Cliente cliente;
-    private long initialTime;
+    private double initialTime;
     private Donacion don;
 // Constructor, y métodos de acceso
 
@@ -39,7 +39,7 @@ public class CajeraThread implements Runnable {
         don.sumar((double)precioTotal/100);
     }
 
-    public CajeraThread(String nombre, Cliente cliente, long initialTime, Donacion d) {
+    public CajeraThread(String nombre, Cliente cliente, double initialTime, Donacion d) {
         this.nombre = nombre;
         this.cliente = cliente;
         this.initialTime = initialTime;

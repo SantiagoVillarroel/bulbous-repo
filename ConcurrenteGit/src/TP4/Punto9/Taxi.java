@@ -11,12 +11,14 @@ package TP4.Punto9;
  */
 public class Taxi implements Runnable {
     private AdminSem as;
+    private String color;
 
-    public Taxi(AdminSem as) {
+    public Taxi(AdminSem as, String c) {
         this.as = as;
+        this.color=c;
     }
     
     public void run(){
-        as.taxi();
+        as.taxi(color);
     }
 }

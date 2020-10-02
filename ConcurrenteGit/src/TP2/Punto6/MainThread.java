@@ -22,7 +22,8 @@ public class MainThread {
             clientes[i]= new Cliente("Cliente "+i, new Producto[]{new Producto(4,(i+3)*2),new Producto(4,11),new Producto(4,(i+2)*6)});
         }
        
-        long initialTime = System.currentTimeMillis();
+        double initialTime = System.currentTimeMillis();
+        System.out.println(initialTime);
         CajeraThread[] cjs= new CajeraThread[6];
         for(int i=0;i <=5; i++){
             cjs[i]= new CajeraThread("Cajera "+i,clientes[i],initialTime,don);
@@ -38,6 +39,7 @@ public class MainThread {
         for (int i = 0; i < 6; i++) {
             misHilos[i].join();
         }
+        System.out.println("tiempo "+(System.currentTimeMillis()-initialTime)/1000);
         System.out.println("Donacion: "+don.getValor());
 
         

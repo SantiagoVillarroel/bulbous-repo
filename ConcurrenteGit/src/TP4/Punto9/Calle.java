@@ -23,35 +23,38 @@ public class Calle {
     public static final String ANSI_WHITE = "\u001B[37m";
     public static void main(String[]args){
         AdminSem as= new AdminSem();
-        Taxi tx= new Taxi(as);
-        Thread[] hilos= new Thread[5];
+        AdminSem as2= new AdminSem();
+        Taxi tx= new Taxi(as,ANSI_BLACK);
+        Thread[] hilos= new Thread[6];
         hilos[0]= new Thread(tx,"Taxi");
         for(int i=1;i<=4;i++){
             switch(i){
                 case 1:
-                hilos[i]= new Thread(new Pasajero(ANSI_RED,as),"Pasajero "+i);
+                hilos[i]= new Thread(new Pasajero(ANSI_RED,as,as2),"Pasajero "+i);
                 break;
                 case 2:
-                hilos[i]= new Thread(new Pasajero(ANSI_GREEN,as),"Pasajero "+i);
+                hilos[i]= new Thread(new Pasajero(ANSI_GREEN,as,as2),"Pasajero "+i);
                 break;
                 case 3:
-                hilos[i]= new Thread(new Pasajero(ANSI_BLUE,as),"Pasajero "+i);
+                hilos[i]= new Thread(new Pasajero(ANSI_BLUE,as,as2),"Pasajero "+i);
                 break;
                 case 4:
-                hilos[i]= new Thread(new Pasajero(ANSI_CYAN,as),"Pasajero "+i);
+                hilos[i]= new Thread(new Pasajero(ANSI_CYAN,as,as2),"Pasajero "+i);
                 break;
             
             
                    
             }
         }
-        
+        hilos[5]= new Thread(new Taxi(as2,ANSI_PURPLE),"Taxi 2");
         hilos[0].start();
+        hilos[5].start();
         try {
-            Thread.sleep(300);
+            Thread.sleep(100);
         } catch (InterruptedException ex) {
             Logger.getLogger(Calle.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         for(int i=1; i<=4;i++){
             hilos[i].start();
             try {
