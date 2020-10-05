@@ -13,6 +13,7 @@ public class Producto {
         this.precio = precio;
     }
 
+
     public int getTiempo() {
         return tiempo;
     }

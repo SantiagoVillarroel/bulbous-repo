@@ -17,27 +17,26 @@ public class MainThread {
 
     public static void main(String[] args) throws InterruptedException {
         Cliente[] clientes= new Cliente[6];
+        Thread[]hilos= new Thread[6];
         Donacion don= new Donacion();
-        for(int i=0;i<=5;i++){
-            clientes[i]= new Cliente("Cliente "+i, new Producto[]{new Producto(4,(i+3)*2),new Producto(4,11),new Producto(4,(i+2)*6)});
-        }
-       
+        CajeraThread[] cj= new CajeraThread[2];
         double initialTime = System.currentTimeMillis();
-        System.out.println(initialTime);
-        CajeraThread[] cjs= new CajeraThread[6];
-        for(int i=0;i <=5; i++){
-            cjs[i]= new CajeraThread("Cajera "+i,clientes[i],initialTime,don);
+        cj[0]= new CajeraThread("Sofia",initialTime,don);
+        cj[1]= new CajeraThread("Faustino",initialTime,don);
+        Atencion at= new Atencion(cj);
+        for(int i=0; i<=clientes.length-1;i++){
+            Producto[]aux= new Producto[i+1];
+            for(int j=0;j<=i;j++){
+                aux[j]= new Producto(j+100, (j+1)*80);
+            }
+            hilos[i]= new Thread(new Cliente("Cliente "+i,aux,at));
         }
-        Thread[] misHilos = new Thread[6];
-        for(int i=0;i<6;i++){
-            misHilos[i]= new Thread(cjs[i],"Cajera "+i);
+        for(int i=0; i<=hilos.length-1;i++){
+            Thread.sleep(200);
+            hilos[i].start();
         }
-
-        for (int i = 0; i < 6; i++) {
-            misHilos[i].start();
-        }
-        for (int i = 0; i < 6; i++) {
-            misHilos[i].join();
+        for(int i=0; i<=hilos.length-1;i++){
+            hilos[i].join();
         }
         System.out.println("tiempo "+(System.currentTimeMillis()-initialTime)/1000);
         System.out.println("Donacion: "+don.getValor());

@@ -9,21 +9,27 @@ package TP2.Punto6;
  *
  * @author Faustino
  */
-public class Cliente {
+public class Cliente implements Runnable{
 
     private String nombre;
     private Producto[] carroCompra;
 // Constructor y métodos de acceso
-
-    public Cliente(String nombre, Producto[] carroCompra) {
+    private Atencion at;
+    public Cliente(String nombre, Producto[] carroCompra, Atencion at) {
         this.nombre = nombre;
         this.carroCompra = carroCompra;
+        this.at= at;
     }
 
     public String getNombre() {
         return nombre;
     }
-
+    public void setCajera(Atencion at){
+        this.at=at;
+    }
+    public void run(){
+        at.solicitarAtencion(this);        
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
