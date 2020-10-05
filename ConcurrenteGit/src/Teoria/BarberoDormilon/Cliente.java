@@ -14,9 +14,9 @@ import java.util.logging.Logger;
  */
 public class Cliente implements Runnable{
     String color;
-    Sillon sillon;
+    Barberia sillon;
 
-    public Cliente(String color, Sillon sillon) {
+    public Cliente(String color, Barberia sillon) {
         this.color = color;
         this.sillon = sillon;
     }
@@ -29,11 +29,11 @@ public class Cliente implements Runnable{
         this.color = color;
     }
 
-    public Sillon getSillon() {
+    public Barberia getSillon() {
         return sillon;
     }
 
-    public void setSillon(Sillon sillon) {
+    public void setSillon(Barberia sillon) {
         this.sillon = sillon;
     }
     

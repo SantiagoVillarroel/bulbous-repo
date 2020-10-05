@@ -14,26 +14,25 @@ import java.util.logging.Logger;
  *
  * @author Faustino
  */
-public class Sillon {
+public class Barberia {
 
     private Semaphore semSillon = new Semaphore(1, true);
     private Semaphore semSalida = new Semaphore(0, true);
     private Semaphore semBarbero;
     private Semaphore semSillas = new Semaphore(1,true);
-    private Cola espera;
-    private int sillasLibres;
+    private CantSillas csillas;
 
-    public Sillon() {
-        sillasLibres = 5;
+    public Barberia() {
+        csillas= new CantSillas(2);
         this.semBarbero = new Semaphore(0, true);
     }
     
     public void afeitar(String color) throws InterruptedException {
-        System.out.println(color + Thread.currentThread().getName() + " duerme...");
+        System.out.println(color + Thread.currentThread().getName() + " ------- ZZZ duerme...");
         semBarbero.acquire();
-        System.out.println(color + Thread.currentThread().getName() + " se despierta. Y empieza a cortar el pelo");
+        System.out.println(color + Thread.currentThread().getName() + " !!!-------------- se despierta. Y empieza a cortar el pelo");
         Thread.sleep(2500);
-        System.out.println(color + Thread.currentThread().getName() + " termina de cortar el pelo.");
+        System.out.println(color + Thread.currentThread().getName() + " TERMINA DE CORTAR PELO");
         semSalida.release();
     }
     
@@ -44,35 +43,22 @@ public class Sillon {
             this.atenderse(color,'n');
         } else {
             res= sillasDeEspera(color);
+            if(res)
+                this.atenderse(color, 's');
         }
         return res;        
     }   
     
     
     private boolean sillasDeEspera(String color){
-        boolean res=false;
-        try {
-            semSillas.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Sillon.class.getName()).log(Level.SEVERE, null, ex);
+        boolean res= csillas.ocupar();
+        if(res){
+            System.out.println(color + Thread.currentThread().getName() + " ++++ se sienta en una SILLA DE ESPERA.");
         }
-            res = sillasLibres > 0;
-            if (res) {
-                sillasLibres--;
-                semSillas.release();
-                System.out.println(color + Thread.currentThread().getName() + " se sienta en una silla de espera. ");
-                this.atenderse(color,'s');
-            }
-            return res;
-            }
+        return res;
+        }
     private void liberarSilladeEspera(){
-        try {
-            semSillas.acquire();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Sillon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sillasLibres++;
-        semSillas.release();
+        csillas.liberar();
     }
             
     private void atenderse(String color, char s) {
@@ -85,10 +71,10 @@ public class Sillon {
         try {
             semSalida.acquire();
         } catch (InterruptedException ex) {
-            Logger.getLogger(Sillon.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Barberia.class.getName()).log(Level.SEVERE, null, ex);
         }
         semSillon.release();
-        System.out.println(color + Thread.currentThread().getName() + " se va.");
+        System.out.println(color + Thread.currentThread().getName() + " se va con un corte nuevo.");
     }
     
 }

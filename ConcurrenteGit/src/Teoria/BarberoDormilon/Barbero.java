@@ -14,10 +14,10 @@ import java.util.logging.Logger;
  */
 public class Barbero implements Runnable{
     String color;
-    Sillon sillon;
+    Barberia sillon;
     int cant;
     
-    public Barbero(String color, Sillon sillon, int cant) {
+    public Barbero(String color, Barberia sillon, int cant) {
         this.color = color;
         this.sillon = sillon;
         this.cant=cant;
@@ -33,11 +33,11 @@ public class Barbero implements Runnable{
         this.color = color;
     }
 
-    public Sillon getSillon() {
+    public Barberia getSillon() {
         return sillon;
     }
 
-    public void setSillon(Sillon sillon) {
+    public void setSillon(Barberia sillon) {
         this.sillon = sillon;
     }
     
