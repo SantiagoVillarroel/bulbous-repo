@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP4.Punto6;
+package Teoria.BarberoDormilon;
 
+import TP4.Punto6.*;
 import TP3.Punto3.*;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;

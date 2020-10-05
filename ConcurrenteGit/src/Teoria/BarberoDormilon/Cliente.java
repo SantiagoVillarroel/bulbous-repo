@@ -40,17 +40,12 @@ public class Cliente implements Runnable{
     
     public void run(){
         boolean res= false;
-        while(!res){
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
         try {
             res= sillon.serAtendido(color);
+            if(!res)
+                System.out.println(color+Thread.currentThread().getName()+" se fue de la peluquerìa porque no habia sillas disponibles.");
         } catch (InterruptedException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
         }
 }
