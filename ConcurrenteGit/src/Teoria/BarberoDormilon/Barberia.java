@@ -62,12 +62,17 @@ public class Barberia {
     }
             
     private void atenderse(String color, char s) {
-        semBarbero.release();
-        System.out.println(color + Thread.currentThread().getName() + " se sienta en el sillòn.");
-        System.out.println(color + Thread.currentThread().getName() + " es atendido.");
-        if(s=='s'){
-            liberarSilladeEspera();
+        if(s=='s'){ // Para los que vienen de la sala de espera. 
+            try {
+                semSillon.acquire();
+                this.liberarSilladeEspera();
+                System.out.println(color + Thread.currentThread().getName() + " se sienta en el sillòn.");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Barberia.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        semBarbero.release();
+        System.out.println(color + Thread.currentThread().getName() + " es atendido.");
         try {
             semSalida.acquire();
         } catch (InterruptedException ex) {
