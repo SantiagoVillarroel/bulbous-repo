@@ -42,13 +42,14 @@ public class Barbero implements Runnable{
     }
     
     public void run(){
-        while(true){
+        double time= System.currentTimeMillis();
+        while(System.currentTimeMillis()<= time + 1000000){
             try {
                 sillon.afeitar(color);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Barbero.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+            }   
     }
+        System.out.println(color+Thread.currentThread().getName()+" terminó la jornada laboral.");
 }
 }
