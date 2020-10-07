@@ -10,20 +10,17 @@ package TP3.Punto8;
  * @author Faustino
  */
 public class Plato extends Instalacion {
+
+    public Plato(int segs, String nombre) {
+        super(segs, nombre);
+    }
     
 
-    public Plato(int segs) {
-        super(segs);
-    }
+    
 
     /**
      *
      * @throws InterruptedException
      */
-    @Override
-    public void usar() throws InterruptedException{
-        System.out.println(Thread.currentThread().getName()+" comiendo...");
-        super.usar();
-        System.out.println(Thread.currentThread().getName()+" terminó de comer.");
-    }
+    
 }

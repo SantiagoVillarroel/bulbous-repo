@@ -13,47 +13,24 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class Hamster implements Runnable{
-    private char turno;
+    
     private Instalacion[] inst;
+    private String color;
+    private AdminJaula aj;
 
-    public Hamster(char turno, Instalacion[] i) {
-        this.turno = turno;
+    public Hamster(Instalacion[] i,String color,AdminJaula aj) {
         this.inst=i;
+        this.color=color;
+        this.aj= aj;
     }
     
     public void run(){
-        for(int i=1; i<=20;i++){
-        switch(turno){
-            //Caso Plato
-            case 'p':
-        {
+        while(true){
             try {
-                inst[0].usar();
+                Thread.sleep(400);
+                aj.solicitarUso(color);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Hamster.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }   turno='r';
-                break;
-                //Caso Rueda
-                case 'r':
-        {
-            try {
-                inst[1].usar();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Hamster.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }turno='h';
-                break;
-                //Caso Hamaca
-                case 'h':
-        {
-            try {
-                inst[2].usar();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Hamster.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }turno='p';
-                break;
-        }
     }}
 }

@@ -6,15 +6,10 @@
 package TP3.Punto8;
 
 public class Rueda extends Instalacion {
+
+    public Rueda(int segs, String nombre) {
+        super(segs, nombre);
+    }
     
 
-    public Rueda(int segs) {
-        super(segs);
-    }
-    
-    public synchronized void usar() throws InterruptedException{
-        System.out.println(Thread.currentThread().getName()+" jugando...");
-        super.usar();
-        System.out.println(Thread.currentThread().getName()+" terminó de correr.");
-    }
 }

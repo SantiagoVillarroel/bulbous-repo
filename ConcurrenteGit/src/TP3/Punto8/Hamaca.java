@@ -10,14 +10,11 @@ package TP3.Punto8;
  * @author Faustino
  */
 public class Hamaca extends Instalacion {
+
+    public Hamaca(int segs, String nombre) {
+        super(segs, nombre);
+    }
     
 
-    public Hamaca(int segs) {
-        super(segs);
-    }
-    public synchronized void usar() throws InterruptedException{
-        System.out.println(Thread.currentThread().getName()+" descansando...");
-        super.usar();
-        System.out.println(Thread.currentThread().getName()+" terminó de descansar.");
-    }
+
 }
