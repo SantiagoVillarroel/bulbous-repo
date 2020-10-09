@@ -43,7 +43,7 @@ public class ConfiteriaPequeña {
         Thread.sleep(200);
         mozo.acquire(); //Se libera cuando alguien pide bebida
         System.out.println(color+"Que va elegir? Tenemos estas opciones: "+Arrays.toString(bebidas));
-        Thread.sleep(300);
+        Thread.sleep(3300);
         elegir.release();//Lo deja elegir al cliente
         eleccion.acquire();//Terminó su elección el cliente
         System.out.println(color+"soy el mozo ya le traigo la bebida...");
@@ -60,10 +60,10 @@ public class ConfiteriaPequeña {
                 Thread.sleep(200);
                 cocinero.acquire(); //Se libera cuando alguien pide comida
                 System.out.println(color+"Que va elegir? Tenemos estas opciones: "+Arrays.toString(opciones));
-                Thread.sleep(300);
+                Thread.sleep(3300);
                 elegirComida.release();//Lo deja elegir al cliente
                 eleccionComida.acquire();//Terminó su elección el cliente
-                Thread.sleep(100);
+                Thread.sleep(1100);
                 System.out.println(color+"soy"+Thread.currentThread().getName()+" ya le traigo su comida");
                 this.cocinarYTraerComida(color);
                 System.out.println(color+" soy el cocinero acá está su pedido. Nos vemos!");
@@ -141,8 +141,9 @@ public class ConfiteriaPequeña {
             elegir.acquire(); //Intenta pedir hasta q el mozo libera este semáforo
             int i= (int)(Math.random()*2);
             System.out.println(color+Thread.currentThread().getName()+" Mmmmmm, que pido???");
-            Thread.sleep(160);
+            Thread.sleep(2160);
             System.out.println(color+" Voy a pedir el "+bebidas[i]);
+            Thread.sleep(2160);
             eleccion.release(); //Avisa q terminó de elegir
             beber.acquire(); //Intenta tomar hasta q mozo avisa q llegó con la bebida
             System.out.println(color+"Gracias. Ahora voy a beber esto.");
