@@ -12,10 +12,10 @@ import TP2.Punto6.Contador;
  * @author Faustino
  */
 public class Instalacion {
-    int segs;
-    String nombre;
-    Contador cuenta;
-    ReentrantLock rlock= new ReentrantLock(true);
+    private int segs;
+    private String nombre;
+    private Contador cuenta;
+    private ReentrantLock rlock= new ReentrantLock(true);
     public Instalacion(int segs,String nombre) {
         this.segs = segs;
         cuenta= new Contador();

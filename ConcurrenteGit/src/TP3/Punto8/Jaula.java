@@ -24,7 +24,11 @@ public class Jaula {
     
     public static void main(String[]args){
         int cant= 6;
-        Instalacion[] aparatos= new Instalacion[]{ new Rueda((int) (Math.random()*9)+8,"Rueda"), new Plato((int) (Math.random()*9)+2,"Plato"), new Hamaca((int) (Math.random()*9)+11,"Hamaca")};
+        Instalacion[] aparatos= new Instalacion[]{ 
+            new Rueda((int) (Math.random()*9)+8,"Rueda"), 
+            new Plato((int) (Math.random()*9)+2,"Plato"), 
+            new Hamaca((int) (Math.random()*9)+11,"Hamaca")
+            };
         AdminJaula aj= new AdminJaula(aparatos);
         Thread[] hamsters= new Thread[cant];
         String[] colores= new String[]{ANSI_RED,ANSI_GREEN,ANSI_BLACK,ANSI_BLUE,ANSI_PURPLE,ANSI_CYAN};

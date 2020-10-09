@@ -43,6 +43,7 @@ public class ConfiteriaPequeña {
         Thread.sleep(200);
         mozo.acquire(); //Se libera cuando alguien pide bebida
         System.out.println(color+"Que va elegir? Tenemos estas opciones: "+Arrays.toString(bebidas));
+        Thread.sleep(300);
         elegir.release();//Lo deja elegir al cliente
         eleccion.acquire();//Terminó su elección el cliente
         System.out.println(color+"soy el mozo ya le traigo la bebida...");
@@ -55,12 +56,14 @@ public class ConfiteriaPequeña {
     public void llevarComidaAEmpleado(String color){ //Trabajo del cocinero
         while(true){
             try {
-                System.out.println(color+"soy el "+color+Thread.currentThread().getName()+" no hay empleados, así que limpio la cocina y pienso nuevas recetas.");
+                System.out.println(color+" soy el "+Thread.currentThread().getName()+" no hay empleados, así que limpio la cocina y pienso nuevas recetas.");
                 Thread.sleep(200);
                 cocinero.acquire(); //Se libera cuando alguien pide comida
                 System.out.println(color+"Que va elegir? Tenemos estas opciones: "+Arrays.toString(opciones));
+                Thread.sleep(300);
                 elegirComida.release();//Lo deja elegir al cliente
                 eleccionComida.acquire();//Terminó su elección el cliente
+                Thread.sleep(100);
                 System.out.println(color+"soy"+Thread.currentThread().getName()+" ya le traigo su comida");
                 this.cocinarYTraerComida(color);
                 System.out.println(color+" soy el cocinero acá está su pedido. Nos vemos!");
