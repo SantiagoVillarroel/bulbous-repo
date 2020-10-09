@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class Cajera {
 
     private String nombre;
-    private long initialTime;
+    private long initialTime; //
 
     public Cajera(String nombre, long time) {
         this.nombre = nombre;
