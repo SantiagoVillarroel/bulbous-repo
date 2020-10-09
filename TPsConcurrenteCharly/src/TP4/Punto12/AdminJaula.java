@@ -5,7 +5,7 @@
  */
 package TP4.Punto12;
 
-import TP2.Punto6.CajeraThread;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
