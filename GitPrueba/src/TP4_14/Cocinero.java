@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Santiago
- */
+ *///
 public class Cocinero extends Trabajador implements Runnable{
     public Cocinero(String nombre, Confiteria conf){
         super(nombre, conf);
