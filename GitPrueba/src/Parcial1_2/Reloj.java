@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author Santiago
  */
 public class Reloj {
-    private Semaphore semDespertar;
+    private Semaphore semDespertar; //
     private ReentrantLock lockDurmientes;
     private int hora, contDespertados, cantDurmientes;
     
