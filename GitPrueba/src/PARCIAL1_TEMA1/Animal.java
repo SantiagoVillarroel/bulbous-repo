@@ -9,7 +9,7 @@ package PARCIAL1_TEMA1;
  *
  * @author Santiago
  */
-public class Animal {
+public class Animal { //
     protected String nombre;
     protected char especie;
     protected Comedor comedor;
