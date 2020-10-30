@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TP5.Punto1;
+package TP5.Punto2;
+
 
 /**
  *
@@ -15,7 +16,7 @@ public class Main {
         int cantgatos = 5, cantperros = 7;
         Thread[] gatos = new Thread[cantgatos];
         Thread[] perros = new Thread[cantperros];
-        Comedor com = new Comedor(5);
+        Comedor com = new Comedor(4);
         AdminComedor ac = new AdminComedor(com, cantgatos, cantperros);
         int max = Math.max(cantgatos, cantperros);
         for (int i = 0; i <= max - 1; i++) {
