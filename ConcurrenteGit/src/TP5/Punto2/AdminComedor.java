@@ -21,31 +21,31 @@ public class AdminComedor {
     }
 
     public void comer(String animal, String color) {
-        if (animal.equals("Gato")) {          
+        if (animal.equals("Gato")) {
             com.comeGato(color);
             cantG.sumar();
         } else {
             com.comePerro(color); //Preguntar sobre cuando hacer la suma.
             cantP.sumar();
         }
-        boolean cambio= this.verificarCant();
-        if(!cambio){
+        boolean cambio = this.verificarCant();
+        if (!cambio){
             System.out.println("~~~~~~~~~~~CANT DISPONIBLE");
-        int x= (int)(Math.random()*1);
-        if(x==1){
-            System.out.println("---RANDOM---");
-            com.getTodosComederos();
+            int x = (int)(Math.random() * 2);
+            if (x == 1) {
+                System.out.println("---RANDOM---");
+                com.getTodosComederos();
+            }
         }
-        }
-        
+
     }
 
     private boolean verificarCant() {
-        boolean res=false;
+        boolean res = false;
         rlock.lock();
         try {
             if (cantG.getI() == gatostotales || cantP.getI() == perrostotales) {
-                res=true;
+                res = true;
                 System.out.println("++++++++++++++++++CANT LLENA");
                 com.getTodosComederos();
                 if (cantG.getI() == gatostotales) {

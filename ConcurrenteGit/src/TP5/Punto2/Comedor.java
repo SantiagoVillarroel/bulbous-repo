@@ -44,21 +44,14 @@ public class Comedor {
     }
     public void comePerro(String color){
         try {
+            //perros esperando q su raza este avalada para comer
             semPerros.acquire();
             semPerros.release();
-            if(comederos.tryAcquire(2)){
+            comederos.acquire(2);
             System.out.println(color+ " perro comiendo 2 platos de una vez.");
             Thread.sleep(4000);
             comederos.release(2);
-            }else{
-                System.out.println(color+"perro come 2 platos de a tandas");
-                comederos.acquire();
-                Thread.sleep(2000);
-                comederos.release();
-                comederos.acquire();
-                Thread.sleep(2000);
-                comederos.release();
-            } 
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(Comedor.class.getName()).log(Level.SEVERE, null, ex);
         }
