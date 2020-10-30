@@ -20,7 +20,7 @@ public class Tren implements Runnable{
     
     public void run(){
         while(true){
-            ct.hacerpaseo(this.color);
+            ct.hacerRecorrido(this.color);
         }
     }
 }

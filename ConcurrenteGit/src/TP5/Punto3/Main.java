@@ -22,7 +22,7 @@ public class Main {
         String[] colores= Colores.colores();
         int cant=4;
         ControlTren ct= new ControlTren(cant);
-        Thread[]hilos= new Thread[8];
+        Thread[]hilos= new Thread[6];
         hilos[0]= new Thread(new Tren(ct,ANSI_BLACK));
         hilos[1]= new Thread(new VendedorTickets(ct,ANSI_BLACK));
         for(int i=2;i<=hilos.length-1;i++){
