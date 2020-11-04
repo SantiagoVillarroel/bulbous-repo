@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * @author Faustino
  */
 public class Plato {
-
+    // Duda: hay que sincronizar estos metodos?
     private int cantidad;
     private int comiendo;
     private ReeantrantLock rlock= new ReentrantLock(true);
