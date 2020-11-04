@@ -22,7 +22,7 @@ public class Main {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static void main(String []args) throws InterruptedException{
-        Barberia sillon= new Barberia();
+        Barberia sillon= new Barberia(3); //3= cantidad de sillas.
         Thread[]hilos= new Thread[20];
         String negro= ANSI_BLACK;
         hilos[0]= new Thread(new Barbero(negro, sillon,15),"Barbero");
@@ -43,9 +43,7 @@ public class Main {
                     break;
                 case 5:
                     color= ANSI_GREEN;
-                    break;
-                
-                    
+                    break;          
             }
         hilos[i]= new Thread(new Cliente(color,sillon),"Cliente"+i);
     }

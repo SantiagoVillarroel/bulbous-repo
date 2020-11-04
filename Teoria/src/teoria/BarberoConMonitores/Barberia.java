@@ -16,16 +16,14 @@ import java.util.logging.Logger;
  */
 public class Barberia {
 
-    private Semaphore semSillon = new Semaphore(1, true);
     private Semaphore semSalida = new Semaphore(0, true);
     private Semaphore semBarbero;
-    private Semaphore semSillas = new Semaphore(3,true);
-    private CantSillas csillas;
+    private Semaphore semSillas;
     private boolean barberoOcupado=false;
 
-    public Barberia() {
-        csillas= new CantSillas(2);
+    public Barberia(int sillas) {
         this.semBarbero = new Semaphore(0, true);
+        semSillas = new Semaphore(sillas,true);
     }
     
     public void afeitar(String color) throws InterruptedException {
