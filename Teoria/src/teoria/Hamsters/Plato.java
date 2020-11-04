@@ -16,7 +16,7 @@ public class Plato {
 
     private int cantidad;
     private int comiendo;
-
+    private ReeantrantLock rlock= new ReentrantLock(true);
     public Plato(int maximo) {
         cantidad = maximo;
         comiendo = 0;
@@ -27,11 +27,15 @@ public class Plato {
     }
 
 
-    public void sumarComiendo(){
+    public void sumarComiendo(){ 
+        rlock.lock;
         this.comiendo++;
+        rlock.unlock;
     }
     
     public void terminarcomer(String nombre){
+        rlock.lock;
         this.comiendo--;
+        rlock.unlock;
     }
 }
