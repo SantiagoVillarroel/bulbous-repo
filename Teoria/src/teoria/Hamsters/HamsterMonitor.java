@@ -16,10 +16,11 @@ public class HamsterMonitor implements Runnable {
 
     private Jaula jale;
     private String miNombre;
-
+ //cambio
     public HamsterMonitor(Jaula jale, String miNombre) {
         this.jale = jale;
         this.miNombre = miNombre;
+        System.out.println("");
     }
 
 

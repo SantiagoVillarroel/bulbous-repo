@@ -27,17 +27,11 @@ public class Plato {
     }
 
 
-
-    
-    public void comer(String nombre){
+    public void sumarComiendo(){
         this.comiendo++;
-        System.out.println(comiendo);
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Plato.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(nombre+" terminó de comer");
+    }
+    
+    public void terminarcomer(String nombre){
         this.comiendo--;
     }
 }

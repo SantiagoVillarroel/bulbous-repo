@@ -36,11 +36,11 @@ public class Jaula {
         } catch (InterruptedException ex) {
             Logger.getLogger(Jaula.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.come(nombre);
+        this.terminaDeComer(nombre);
     }
     
     private synchronized void empiezaAComer(String nombre){
-        while(this.comiendo>=3){
+        while(plato.getComiendo()>=3){
             System.out.println(nombre+" espera a comer");
             try {
                 this.wait();
@@ -48,12 +48,14 @@ public class Jaula {
                 Logger.getLogger(Jaula.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        System.out.println(nombre+" empieza a comer");
+        plato.sumarComiendo();
         
     }
     
-    private synchronized void come(String nombre){
-        System.out.println(nombre+" empieza a comer");
-        plato.comer(nombre);
+    private synchronized void terminaDeComer(String nombre){
+        System.out.println(nombre+"termina de comer");
+        plato.terminarcomer(nombre);
         this.notify();
     }
 }

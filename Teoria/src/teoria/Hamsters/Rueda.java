@@ -17,7 +17,7 @@ public class Rueda {
     public synchronized void rodar(String nombre) {
         try {
             System.out.println(nombre + " empieza a rodar");
-            
+            System.out.println("");
             Thread.sleep((long) Math.random() * 1500);
         } catch (InterruptedException ex) {
             Logger.getLogger(Rueda.class.getName()).log(Level.SEVERE, null, ex);

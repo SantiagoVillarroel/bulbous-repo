@@ -14,8 +14,10 @@ public class Main {
         String[]colores= Colores.colores();
         Jaula jaula= new Jaula();
         Thread[]hilos= new Thread[8];
+        System.out.println("_");
         for(int i=0;i<hilos.length;i++){
             hilos[i]= new Thread(new HamsterMonitor(jaula,"Hamster "+i));
+            
         }
         for(int i=0;i<hilos.length;i++){
             hilos[i].start();
