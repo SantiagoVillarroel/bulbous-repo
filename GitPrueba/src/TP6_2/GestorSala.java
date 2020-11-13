@@ -13,8 +13,7 @@ import java.util.Random;
  */
 public class GestorSala {
     private Random r;
-    private int maxPersonas, personasUmbral, cantPersonas=0, limiteActual, tUmbral, tempActual;
-    private boolean umbral=false, jubiladoEspera=false;
+    private int maxPersonas, personasUmbral, cantPersonas=0, limiteActual, tUmbral, tempActual, jubiladosEsperando=0;
     public GestorSala(int max, int lim, int t){
         this.maxPersonas=max;
         this.personasUmbral=lim;
@@ -23,7 +22,7 @@ public class GestorSala {
         this.limiteActual=max;
     }
     public synchronized void entrarSala(String nombre) throws InterruptedException{
-        while(cantPersonas > limiteActual || jubiladoEspera){
+        while(cantPersonas > limiteActual || jubiladosEsperando>0){
             System.out.println(nombre+" NO PUDO ENTRAR. ESPERA");
             this.wait();
         }
@@ -31,13 +30,13 @@ public class GestorSala {
         this.cantPersonas++;
     }
     public synchronized void entrarSalaJubilado(String nombre) throws InterruptedException{
-        this.jubiladoEspera=true;
+        this.jubiladosEsperando++;
         while(cantPersonas > limiteActual){
             System.out.println(nombre+" NO PUDO ENTRAR. ESPERA");
             this.wait();
         }
         System.out.println(nombre +" ENTRÓ AL MUSEO");
-        this.jubiladoEspera=false;
+        this.jubiladosEsperando--;
         this.cantPersonas++;
     }
     public synchronized void salirSala(String nombre){
@@ -47,10 +46,8 @@ public class GestorSala {
     }
     public void notifTemp(){
         if(this.tempActual>this.tUmbral){
-            umbral=true;
             limiteActual=personasUmbral;
         }else{
-            umbral=false;
             limiteActual=maxPersonas;
         }
     }
